@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{492899DD-584E-4B84-B721-811DB7137458}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Web.config">
+    <Files>
+      <File FileName="Web.config" Line="64" Column="79" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PetAPI" expanded="True">
+            <Node name="PetAPI" expanded="True">
+              <Node name="Data" expanded="True" />
+              <Node name="Web.config" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.PetAPI PreferredExecutionTarget="/Applications/Google Chrome.app" />
+</Properties>

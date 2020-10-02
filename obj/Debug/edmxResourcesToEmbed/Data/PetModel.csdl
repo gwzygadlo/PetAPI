@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="petModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="color_id" />
+    </Key>
+    <Property Name="color_id" Type="Guid" Nullable="false" />
+    <Property Name="color_name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Pet_Color" Relationship="Self.FK_Color_Coat_Color" FromRole="Color" ToRole="Pet_Color" />
+  </EntityType>
+  <EntityType Name="Health">
+    <Key>
+      <PropertyRef Name="health_id" />
+    </Key>
+    <Property Name="health_id" Type="Guid" Nullable="false" />
+    <Property Name="health_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="health_scale" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Medicines" Relationship="Self.FK_medicinehealth" FromRole="Health" ToRole="Medicine" />
+    <NavigationProperty Name="Pets" Relationship="Self.FK_pethealth" FromRole="Health" ToRole="Pet" />
+  </EntityType>
+  <EntityType Name="Hunger">
+    <Key>
+      <PropertyRef Name="hunger_id" />
+    </Key>
+    <Property Name="hunger_id" Type="Guid" Nullable="false" />
+    <Property Name="hunger_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hunger_scale" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pets" Relationship="Self.FK_pethunger" FromRole="Hunger" ToRole="Pet" />
+    <NavigationProperty Name="Treats" Relationship="Self.FK_treathunger" FromRole="Hunger" ToRole="Treat" />
+  </EntityType>
+  <EntityType Name="Medicine">
+    <Key>
+      <PropertyRef Name="medicine_id" />
+    </Key>
+    <Property Name="medicine_id" Type="Guid" Nullable="false" />
+    <Property Name="medicine_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="health_id" Type="Guid" Nullable="false" />
+    <Property Name="medicine_quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Health" Relationship="Self.FK_medicinehealth" FromRole="Medicine" ToRole="Health" />
+  </EntityType>
+  <EntityType Name="Owner">
+    <Key>
+      <PropertyRef Name="owner_id" />
+    </Key>
+    <Property Name="owner_id" Type="Guid" Nullable="false" />
+    <Property Name="owner_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="owner_age" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Pets" Relationship="Self.FK_petowner" FromRole="Owner" ToRole="Pet" />
+  </EntityType>
+  <EntityType Name="Pet">
+    <Key>
+      <PropertyRef Name="pet_id" />
+    </Key>
+    <Property Name="pet_id" Type="Guid" Nullable="false" />
+    <Property Name="pet_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pet_age" Type="Int32" Nullable="false" />
+    <Property Name="pet_sex" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pet_type_id" Type="Guid" Nullable="false" />
+    <Property Name="owner_id" Type="Guid" Nullable="false" />
+    <Property Name="hunger_id" Type="Guid" Nullable="false" />
+    <Property Name="health_id" Type="Guid" />
+    <NavigationProperty Name="Health" Relationship="Self.FK_pethealth" FromRole="Pet" ToRole="Health" />
+    <NavigationProperty Name="Hunger" Relationship="Self.FK_pethunger" FromRole="Pet" ToRole="Hunger" />
+    <NavigationProperty Name="Owner" Relationship="Self.FK_petowner" FromRole="Pet" ToRole="Owner" />
+    <NavigationProperty Name="Pet_Color" Relationship="Self.FK_petcoatcolor" FromRole="Pet" ToRole="Pet_Color" />
+    <NavigationProperty Name="Pet_Type" Relationship="Self.FK_petpettype" FromRole="Pet" ToRole="Pet_Type" />
+  </EntityType>
+  <EntityType Name="Pet_Color">
+    <Key>
+      <PropertyRef Name="pet_color_id" />
+    </Key>
+    <Property Name="color_id" Type="Guid" Nullable="false" />
+    <Property Name="pet_color_id" Type="Guid" Nullable="false" />
+    <Property Name="color_priority" Type="Int32" Nullable="false" />
+    <Property Name="pet_id" Type="Guid" />
+    <NavigationProperty Name="Color" Relationship="Self.FK_Color_Coat_Color" FromRole="Pet_Color" ToRole="Color" />
+    <NavigationProperty Name="Pet" Relationship="Self.FK_petcoatcolor" FromRole="Pet_Color" ToRole="Pet" />
+  </EntityType>
+  <EntityType Name="Pet_Type">
+    <Key>
+      <PropertyRef Name="pet_type_id" />
+    </Key>
+    <Property Name="pet_type_id" Type="Guid" Nullable="false" />
+    <Property Name="pet_type_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lifespan" Type="Int32" Nullable="false" />
+    <Property Name="coat_type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pets" Relationship="Self.FK_petpettype" FromRole="Pet_Type" ToRole="Pet" />
+    <NavigationProperty Name="Treats" Relationship="Self.FK_treatpettype" FromRole="Pet_Type" ToRole="Treat" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Treat">
+    <Key>
+      <PropertyRef Name="treat_id" />
+    </Key>
+    <Property Name="treat_id" Type="Guid" Nullable="false" />
+    <Property Name="treat_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="pet_type_id" Type="Guid" Nullable="false" />
+    <Property Name="hunger_id" Type="Guid" Nullable="false" />
+    <Property Name="treat_quantity" Type="Int32" Nullable="false" />
+    <Property Name="calories" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Hunger" Relationship="Self.FK_treathunger" FromRole="Treat" ToRole="Hunger" />
+    <NavigationProperty Name="Pet_Type" Relationship="Self.FK_treatpettype" FromRole="Treat" ToRole="Pet_Type" />
+  </EntityType>
+  <Association Name="FK_Color_Coat_Color">
+    <End Role="Color" Type="Self.Color" Multiplicity="1" />
+    <End Role="Pet_Color" Type="Self.Pet_Color" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="color_id" />
+      </Principal>
+      <Dependent Role="Pet_Color">
+        <PropertyRef Name="color_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medicinehealth">
+    <End Role="Health" Type="Self.Health" Multiplicity="1" />
+    <End Role="Medicine" Type="Self.Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Health">
+        <PropertyRef Name="health_id" />
+      </Principal>
+      <Dependent Role="Medicine">
+        <PropertyRef Name="health_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pethealth">
+    <End Role="Health" Type="Self.Health" Multiplicity="0..1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Health">
+        <PropertyRef Name="health_id" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="health_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_pethunger">
+    <End Role="Hunger" Type="Self.Hunger" Multiplicity="1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hunger">
+        <PropertyRef Name="hunger_id" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="hunger_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_treathunger">
+    <End Role="Hunger" Type="Self.Hunger" Multiplicity="1" />
+    <End Role="Treat" Type="Self.Treat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hunger">
+        <PropertyRef Name="hunger_id" />
+      </Principal>
+      <Dependent Role="Treat">
+        <PropertyRef Name="hunger_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_petowner">
+    <End Role="Owner" Type="Self.Owner" Multiplicity="1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Owner">
+        <PropertyRef Name="owner_id" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="owner_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_petcoatcolor">
+    <End Role="Pet" Type="Self.Pet" Multiplicity="0..1" />
+    <End Role="Pet_Color" Type="Self.Pet_Color" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="pet_id" />
+      </Principal>
+      <Dependent Role="Pet_Color">
+        <PropertyRef Name="pet_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_petpettype">
+    <End Role="Pet_Type" Type="Self.Pet_Type" Multiplicity="1" />
+    <End Role="Pet" Type="Self.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet_Type">
+        <PropertyRef Name="pet_type_id" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="pet_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_treatpettype">
+    <End Role="Pet_Type" Type="Self.Pet_Type" Multiplicity="1" />
+    <End Role="Treat" Type="Self.Treat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet_Type">
+        <PropertyRef Name="pet_type_id" />
+      </Principal>
+      <Dependent Role="Treat">
+        <PropertyRef Name="pet_type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="petEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Colors" EntityType="Self.Color" />
+    <EntitySet Name="Healths" EntityType="Self.Health" />
+    <EntitySet Name="Hungers" EntityType="Self.Hunger" />
+    <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+    <EntitySet Name="Owners" EntityType="Self.Owner" />
+    <EntitySet Name="Pets" EntityType="Self.Pet" />
+    <EntitySet Name="Pet_Color" EntityType="Self.Pet_Color" />
+    <EntitySet Name="Pet_Type" EntityType="Self.Pet_Type" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Treats" EntityType="Self.Treat" />
+    <AssociationSet Name="FK_Color_Coat_Color" Association="Self.FK_Color_Coat_Color">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="Pet_Color" EntitySet="Pet_Color" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medicinehealth" Association="Self.FK_medicinehealth">
+      <End Role="Health" EntitySet="Healths" />
+      <End Role="Medicine" EntitySet="Medicines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pethealth" Association="Self.FK_pethealth">
+      <End Role="Health" EntitySet="Healths" />
+      <End Role="Pet" EntitySet="Pets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_pethunger" Association="Self.FK_pethunger">
+      <End Role="Hunger" EntitySet="Hungers" />
+      <End Role="Pet" EntitySet="Pets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_treathunger" Association="Self.FK_treathunger">
+      <End Role="Hunger" EntitySet="Hungers" />
+      <End Role="Treat" EntitySet="Treats" />
+    </AssociationSet>
+    <AssociationSet Name="FK_petowner" Association="Self.FK_petowner">
+      <End Role="Owner" EntitySet="Owners" />
+      <End Role="Pet" EntitySet="Pets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_petcoatcolor" Association="Self.FK_petcoatcolor">
+      <End Role="Pet" EntitySet="Pets" />
+      <End Role="Pet_Color" EntitySet="Pet_Color" />
+    </AssociationSet>
+    <AssociationSet Name="FK_petpettype" Association="Self.FK_petpettype">
+      <End Role="Pet_Type" EntitySet="Pet_Type" />
+      <End Role="Pet" EntitySet="Pets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_treatpettype" Association="Self.FK_treatpettype">
+      <End Role="Pet_Type" EntitySet="Pet_Type" />
+      <End Role="Treat" EntitySet="Treats" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

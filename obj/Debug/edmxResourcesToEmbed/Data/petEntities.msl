@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="petModel1StoreContainer" CdmEntityContainer="petEntities1">
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="petModel1.Color">
+        <MappingFragment StoreEntitySet="Color">
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="color_name" ColumnName="color_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Healths">
+      <EntityTypeMapping TypeName="petModel1.Health">
+        <MappingFragment StoreEntitySet="Health">
+          <ScalarProperty Name="health_id" ColumnName="health_id" />
+          <ScalarProperty Name="health_name" ColumnName="health_name" />
+          <ScalarProperty Name="health_scale" ColumnName="health_scale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hungers">
+      <EntityTypeMapping TypeName="petModel1.Hunger">
+        <MappingFragment StoreEntitySet="Hunger">
+          <ScalarProperty Name="hunger_id" ColumnName="hunger_id" />
+          <ScalarProperty Name="hunger_name" ColumnName="hunger_name" />
+          <ScalarProperty Name="hunger_scale" ColumnName="hunger_scale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Medicines">
+      <EntityTypeMapping TypeName="petModel1.Medicine">
+        <MappingFragment StoreEntitySet="Medicine">
+          <ScalarProperty Name="medicine_id" ColumnName="medicine_id" />
+          <ScalarProperty Name="medicine_name" ColumnName="medicine_name" />
+          <ScalarProperty Name="health_id" ColumnName="health_id" />
+          <ScalarProperty Name="medicine_quantity" ColumnName="medicine_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Owners">
+      <EntityTypeMapping TypeName="petModel1.Owner">
+        <MappingFragment StoreEntitySet="Owner">
+          <ScalarProperty Name="owner_id" ColumnName="owner_id" />
+          <ScalarProperty Name="owner_name" ColumnName="owner_name" />
+          <ScalarProperty Name="owner_age" ColumnName="owner_age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pets">
+      <EntityTypeMapping TypeName="petModel1.Pet">
+        <MappingFragment StoreEntitySet="Pet">
+          <ScalarProperty Name="pet_id" ColumnName="pet_id" />
+          <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+          <ScalarProperty Name="pet_age" ColumnName="pet_age" />
+          <ScalarProperty Name="pet_sex" ColumnName="pet_sex" />
+          <ScalarProperty Name="pet_type_id" ColumnName="pet_type_id" />
+          <ScalarProperty Name="owner_id" ColumnName="owner_id" />
+          <ScalarProperty Name="hunger_id" ColumnName="hunger_id" />
+          <ScalarProperty Name="health_id" ColumnName="health_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pet_Color">
+      <EntityTypeMapping TypeName="petModel1.Pet_Color">
+        <MappingFragment StoreEntitySet="Pet_Color">
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="pet_color_id" ColumnName="pet_color_id" />
+          <ScalarProperty Name="color_priority" ColumnName="color_priority" />
+          <ScalarProperty Name="pet_id" ColumnName="pet_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pet_Type">
+      <EntityTypeMapping TypeName="petModel1.Pet_Type">
+        <MappingFragment StoreEntitySet="Pet_Type">
+          <ScalarProperty Name="pet_type_id" ColumnName="pet_type_id" />
+          <ScalarProperty Name="pet_type_name" ColumnName="pet_type_name" />
+          <ScalarProperty Name="lifespan" ColumnName="lifespan" />
+          <ScalarProperty Name="coat_type" ColumnName="coat_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="petModel1.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Treats">
+      <EntityTypeMapping TypeName="petModel1.Treat">
+        <MappingFragment StoreEntitySet="Treat">
+          <ScalarProperty Name="treat_id" ColumnName="treat_id" />
+          <ScalarProperty Name="treat_name" ColumnName="treat_name" />
+          <ScalarProperty Name="pet_type_id" ColumnName="pet_type_id" />
+          <ScalarProperty Name="hunger_id" ColumnName="hunger_id" />
+          <ScalarProperty Name="treat_quantity" ColumnName="treat_quantity" />
+          <ScalarProperty Name="calories" ColumnName="calories" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
